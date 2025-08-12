@@ -7,5 +7,6 @@ import java.util.List;
 
 public interface CategoryService {
     List<Category> listCategories();
+    Category saveCategory(Category category);
 ;
 }

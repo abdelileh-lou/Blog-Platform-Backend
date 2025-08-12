@@ -1,0 +1,15 @@
+/home/abdelileh-louhichi/Documents/GitHubProjects/Blog-Platform-Backend/src/main/java/com/projects/blog/BlogApplication.java
+/home/abdelileh-louhichi/Documents/GitHubProjects/Blog-Platform-Backend/src/main/java/com/projects/blog/Controllers/CategoryController.java
+/home/abdelileh-louhichi/Documents/GitHubProjects/Blog-Platform-Backend/src/main/java/com/projects/blog/dtos/CategoryDTO.java
+/home/abdelileh-louhichi/Documents/GitHubProjects/Blog-Platform-Backend/src/main/java/com/projects/blog/entities/Category.java
+/home/abdelileh-louhichi/Documents/GitHubProjects/Blog-Platform-Backend/src/main/java/com/projects/blog/entities/Post.java
+/home/abdelileh-louhichi/Documents/GitHubProjects/Blog-Platform-Backend/src/main/java/com/projects/blog/entities/Tag.java
+/home/abdelileh-louhichi/Documents/GitHubProjects/Blog-Platform-Backend/src/main/java/com/projects/blog/entities/User.java
+/home/abdelileh-louhichi/Documents/GitHubProjects/Blog-Platform-Backend/src/main/java/com/projects/blog/enums/PostStatus.java
+/home/abdelileh-louhichi/Documents/GitHubProjects/Blog-Platform-Backend/src/main/java/com/projects/blog/mappers/CategoryMapper.java
+/home/abdelileh-louhichi/Documents/GitHubProjects/Blog-Platform-Backend/src/main/java/com/projects/blog/repositories/CategoryRepository.java
+/home/abdelileh-louhichi/Documents/GitHubProjects/Blog-Platform-Backend/src/main/java/com/projects/blog/repositories/PostRepository.java
+/home/abdelileh-louhichi/Documents/GitHubProjects/Blog-Platform-Backend/src/main/java/com/projects/blog/repositories/TagyRepository.java
+/home/abdelileh-louhichi/Documents/GitHubProjects/Blog-Platform-Backend/src/main/java/com/projects/blog/repositories/UserRepository.java
+/home/abdelileh-louhichi/Documents/GitHubProjects/Blog-Platform-Backend/src/main/java/com/projects/blog/services/CategoryService.java
+/home/abdelileh-louhichi/Documents/GitHubProjects/Blog-Platform-Backend/src/main/java/com/projects/blog/services/impl/CategoryServiceImpl.java
