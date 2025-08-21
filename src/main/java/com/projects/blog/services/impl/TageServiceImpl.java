@@ -7,10 +7,7 @@ import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 
 
@@ -43,5 +40,15 @@ public class TageServiceImpl implements TagService {
         saveTags.addAll(existing);
         return  saveTags;
 
+    }
+
+    @Override
+    public void deleteTag(UUID id) {
+        tagRepository.findById(id).ifPresent(tag -> {
+           if (!tag.getPosts().isEmpty()){
+               throw new IllegalStateException("Tag has posts associated with it. Cannot be deleted");
+           }
+           tagRepository.deleteById(id);
+        });
     }
 }
