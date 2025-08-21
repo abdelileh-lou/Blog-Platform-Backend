@@ -4,6 +4,7 @@ package com.projects.blog.services.impl;
 import com.projects.blog.entities.Category;
 import com.projects.blog.entities.Post;
 import com.projects.blog.entities.Tag;
+import com.projects.blog.entities.User;
 import com.projects.blog.enums.PostStatus;
 import com.projects.blog.repositories.PostRepository;
 import com.projects.blog.services.CategoryService;
@@ -46,5 +47,10 @@ public class PostServiceImpl implements PostService {
         }
 
         return postRepository.findAllByStatus(PostStatus.PUBLISHED);
+    }
+
+    @Override
+    public List<Post> getDraftPosts(User user) {
+       return postRepository.findAllByAuthorAndStatus(user , PostStatus.DRAFT);
     }
 }
