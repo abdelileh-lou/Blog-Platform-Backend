@@ -3,9 +3,7 @@ package com.projects.blog.entities;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.util.List;
-import java.util.Objects;
-import java.util.UUID;
+import java.util.*;
 
 
 @AllArgsConstructor
@@ -25,7 +23,7 @@ public class Tag {
     private String name;
 
     @ManyToMany(mappedBy = "tags")
-    private List<Post> posts;
+    private Set<Post> posts = new HashSet<>();
 
     @Override
     public boolean equals(Object o) {
