@@ -18,10 +18,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-import java.util.UUID;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
@@ -33,6 +30,11 @@ public class PostServiceImpl implements PostService {
     private final TagService tagService;
 
     private static final int WORDS_PER_MINUTE = 200;
+
+    @Override
+    public Post getPostById(UUID id) {
+        return postRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("Post not found with id:" + id));
+    }
 
     @Override
     @Transactional(readOnly = true)
@@ -81,6 +83,13 @@ public class PostServiceImpl implements PostService {
         newPost.setTags(new HashSet<>(tags));
 
         return postRepository.save(newPost);
+
+    }
+
+    @Override
+    public void deletePost(UUID id) {
+        Post post = getPostById(id);
+        postRepository.deleteById(id);
 
     }
 

@@ -60,7 +60,7 @@ public class PostController {
 
 
 
-    @PutMapping(path = "/{id")
+    @PutMapping(path = "/{id}")
     public ResponseEntity<PostDto> updatePost(@PathVariable UUID id
             , @RequestBody UpdatePostRequestDto updatePostRequestDto
             , @RequestAttribute UUID userId){
@@ -69,6 +69,21 @@ public class PostController {
         PostDto postDto = postMapper.toPostDto(updatePost);
         return new ResponseEntity<>(postDto , HttpStatus.OK);
 
+    }
+
+
+    @GetMapping("/{id}")
+    public ResponseEntity<PostDto> getPost(@PathVariable UUID id){
+        Post postById = postService.getPostById(id);
+        PostDto postDto = postMapper.toPostDto(postById);
+        return ResponseEntity.ok(postDto);
+    }
+
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deletePost(@PathVariable UUID id){
+        postService.deletePost(id);
+        return ResponseEntity.noContent().build();
     }
 
 }
