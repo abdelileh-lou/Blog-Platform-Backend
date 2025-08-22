@@ -2,20 +2,25 @@ package com.projects.blog.mappers;
 
 import com.projects.blog.dtos.AuthorDto;
 import com.projects.blog.dtos.CategoryDTO;
+import com.projects.blog.dtos.CreatePostRequest;
+import com.projects.blog.dtos.CreatePostRequestDto;
 import com.projects.blog.dtos.PostDto;
 import com.projects.blog.dtos.TagResponse;
+import com.projects.blog.dtos.UpdatePostRequest;
+import com.projects.blog.dtos.UpdatePostRequestDto;
 import com.projects.blog.entities.Category;
 import com.projects.blog.entities.Post;
 import com.projects.blog.entities.Tag;
 import com.projects.blog.entities.User;
 import java.util.LinkedHashSet;
 import java.util.Set;
+import java.util.UUID;
 import javax.annotation.processing.Generated;
 import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2025-08-21T17:50:21+0100",
+    date = "2025-08-22T18:08:12+0100",
     comments = "version: 1.6.3, compiler: javac, environment: Java 21.0.7 (Microsoft)"
 )
 @Component
@@ -41,6 +46,43 @@ public class PostMapperImpl implements PostMapper {
         postDto.updatedAt( post.getUpdatedAt() );
 
         return postDto.build();
+    }
+
+    @Override
+    public CreatePostRequest toCreatePostRequest(CreatePostRequestDto createPostRequestDto) {
+        if ( createPostRequestDto == null ) {
+            return null;
+        }
+
+        CreatePostRequest.CreatePostRequestBuilder createPostRequest = CreatePostRequest.builder();
+
+        createPostRequest.title( createPostRequestDto.getTitle() );
+        createPostRequest.content( createPostRequestDto.getContent() );
+        createPostRequest.categoryId( createPostRequestDto.getCategoryId() );
+        createPostRequest.status( createPostRequestDto.getStatus() );
+
+        return createPostRequest.build();
+    }
+
+    @Override
+    public UpdatePostRequest toUpdatePostRequest(UpdatePostRequestDto updatePostRequestDto) {
+        if ( updatePostRequestDto == null ) {
+            return null;
+        }
+
+        UpdatePostRequest.UpdatePostRequestBuilder updatePostRequest = UpdatePostRequest.builder();
+
+        updatePostRequest.id( updatePostRequestDto.getId() );
+        updatePostRequest.title( updatePostRequestDto.getTitle() );
+        updatePostRequest.content( updatePostRequestDto.getContent() );
+        updatePostRequest.categoryId( updatePostRequestDto.getCategoryId() );
+        Set<UUID> set = updatePostRequestDto.getTagIds();
+        if ( set != null ) {
+            updatePostRequest.tagIds( new LinkedHashSet<UUID>( set ) );
+        }
+        updatePostRequest.status( updatePostRequestDto.getStatus() );
+
+        return updatePostRequest.build();
     }
 
     protected AuthorDto userToAuthorDto(User user) {
